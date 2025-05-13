@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+<body>
+    <div class="container">
+        <h1>🌤️ Weather Reporter</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if weather %}
+            {% if weather.error %}
+                <p class="error">{{ weather.error }}</p>
+            {% else %}
+                <div class="result">
+                    <h2>{{ weather.city }}</h2>
+                    <p>{{ weather.temperature }}°C - {{ weather.description }}</p>
+                    <!-- <img src="https://www.flaticon.com/free-icon/cloudy_1163661?term=weather&page=1&position=2&origin=tag&related_id=1163661"> -->
+                    <img src="{{ weather.image_url }}" alt="Weather Image">
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
